@@ -1,10 +1,10 @@
 import java.util.Optional;
 
 class Card {
-    private final Suit suit;
+    private final CardSuit suit;
     private final Rank rank;
 
-    Card(Rank rank, Suit suit) {
+    Card(Rank rank, CardSuit suit) {
         this.rank = rank;
         this.suit = suit;
     }
@@ -13,7 +13,7 @@ class Card {
         return this.rank;
     }
 
-    Suit getSuit() {
+    CardSuit getCardSuit() {
         return this.suit;
     }
 
@@ -21,7 +21,8 @@ class Card {
         return this.rank.compareValue(other.rank);
     }
 
-    int compareOfSuit(Card other, Suit suit) {
+    /*
+    int compareOfCardSuit(Card other, CardSuit suit) {
         if (this.suit == suit && other.suit == suit) {
             return this.compareRank(other);
         }
@@ -34,15 +35,16 @@ class Card {
         return 0;
     }
 
-    int compareTo(Card other, Suit lead, Optional<Suit> trump) {
+    int compareTo(Card other, CardSuit lead, Optional<CardSuit> trump) {
         return trump.map(t -> {
-                    int cmp = this.compareOfSuit(other, t);
-                    return cmp == 0 ? this.compareOfSuit(other, lead) : cmp;
+                    int cmp = this.compareOfCardSuit(other, t);
+                    return cmp == 0 ? this.compareOfCardSuit(other, lead) : cmp;
                 })
-                .orElse(this.compareOfSuit(other, lead));
+                .orElse(this.compareOfCardSuit(other, lead));
         
     }
-    
+     */
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

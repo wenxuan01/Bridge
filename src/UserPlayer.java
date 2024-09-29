@@ -29,7 +29,7 @@ class UserPlayer extends Player {
                 default:
                     Optional<Integer> level = TextInput.decodeLevel(inputBid
                             .substring(0, 1));
-                    Optional<Optional<Suit>> suit = TextInput.decodeSuit(inputBid
+                    Optional<ContractSuit> suit = TextInput.decodeContractSuit(inputBid
                             .substring(1, inputBid.length()));
                     bid = level.flatMap(l -> suit
                             .map(s -> new Bid(BidType.CONTRACT,

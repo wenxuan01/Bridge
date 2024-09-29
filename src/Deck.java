@@ -14,7 +14,7 @@ class Deck {
 
     static Deck sortedDeck() {
         return new Deck(Arrays.stream(Rank.values())
-                .flatMap(rank -> Arrays.stream(Suit.values())
+                .flatMap(rank -> Arrays.stream(CardSuit.values())
                         .map(suit -> new Card(rank, suit)))
                 .toList());
     }

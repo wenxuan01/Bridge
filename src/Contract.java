@@ -1,17 +1,17 @@
 import java.util.Optional;
 
 class Contract {
-    private final Optional<Suit> suit;
+    private final ContractSuit suit;
     private final int level;
     private final boolean doubled;
     private final boolean redoubled;
     private final Position declarer;
 
-    Contract(Optional<Suit> suit, int level, Position declarer) {
+    Contract(ContractSuit suit, int level, Position declarer) {
         this(suit, level, declarer, false, false);
     }
 
-    private Contract(Optional<Suit> suit, int level, Position declarer,
+    private Contract(ContractSuit suit, int level, Position declarer,
             boolean doubled, boolean redoubled) {
         this.suit = suit;
         this.level = level;
@@ -36,13 +36,10 @@ class Contract {
         if (this.level != other.level) {
             return this.level - other.level;
         }
-        return this.suit.map(thisSuit -> other.suit
-                .map(otherSuit -> thisSuit.compareOrder(otherSuit))
-                        .orElse(-1))
-                .orElse(other.suit.isPresent() ? 1 : 0);
+        return this.suit.compareOrder(other.suit);
     }
     
-    Optional<Suit> getSuit() {
+    ContractSuit getContractSuit() {
         return this.suit;
     }
 
@@ -63,8 +60,7 @@ class Contract {
     }
     
     String toStringShort() {
-        return this.level + this.suit.map(s -> s.getStr())
-                .orElse("NT");
+        return this.level + this.suit.getStr();
     }
 
     @Override

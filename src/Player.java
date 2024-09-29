@@ -18,4 +18,6 @@ abstract class Player {
     }
 
     abstract Bid getBid(Auction auction, Scanner scanner);
+    
+    // abstract Card getCard(State state);
 }

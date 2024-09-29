@@ -1,18 +1,18 @@
 import java.util.Optional;
 
 class TextInput {
-    public static Optional<Optional<Suit>> decodeSuit(String s) {
+    public static Optional<ContractSuit> decodeContractSuit(String s) {
         switch(s) {
             case "C": 
-                return Optional.of(Optional.of(Suit.CLUBS));
+                return Optional.of(ContractSuit.CLUBS);
             case "D":
-                return Optional.of(Optional.of(Suit.DIAMONDS));
+                return Optional.of(ContractSuit.DIAMONDS);
             case "H" :
-                return Optional.of(Optional.of(Suit.HEARTS));
+                return Optional.of(ContractSuit.HEARTS);
             case "S":
-                return Optional.of(Optional.of(Suit.SPADES));
+                return Optional.of(ContractSuit.SPADES);
             case "NT":
-                return Optional.of(Optional.empty());
+                return Optional.of(ContractSuit.NOTRUMPS);
             default:
                 System.out.println("Unable to decode suit " + s);
                 return Optional.empty();

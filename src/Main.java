@@ -57,6 +57,7 @@ class Main {
         System.out.println(auction.getContract()
                 .map(contract -> "Final contract is: " +  contract.toString())
                 .orElse("Passed out"));
+        
 
 
         scanner.close();

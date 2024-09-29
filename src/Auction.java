@@ -75,13 +75,13 @@ class Auction {
                         }));
     }
 
-    Position getDeclarer(Position position, Optional<Suit> suit) {
+    Position getDeclarer(Position position, ContractSuit suit) {
         return this.bids.stream()
                 .filter(bid -> bid.getBidType() == BidType.CONTRACT
                         && (bid.getPosition() == position 
                                 || bid.getPosition() == position.partner())
                         && bid.getContract().map(bidContract ->
-                                bidContract.getSuit().equals(suit))
+                                bidContract.getContractSuit().equals(suit))
                                 .orElse(false))
                 .findFirst()
                 .map(bid -> bid.getPosition())

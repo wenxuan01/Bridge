@@ -11,9 +11,9 @@ class Hand {
         return this.cards;
     }
 
-    List<Card> getCards(Suit suit) {
+    List<Card> getCards(CardSuit suit) {
         return this.cards.stream()
-                .filter(card -> card.getSuit() == suit)
+                .filter(card -> card.getCardSuit() == suit)
                 .sorted((a, b) -> b.compareRank(a))
                 .toList();
     }
@@ -24,7 +24,7 @@ class Hand {
                 .toList());
     }
     
-    private String getFormattedSuit(Suit suit) {
+    private String getFormattedCardSuit(CardSuit suit) {
         return suit.getStr() + ": " + this.getCards(suit).stream()
                 .map(card -> card.getRank().getStr() + " ")
                 .reduce("", (x, y) -> x + y);
@@ -32,9 +32,9 @@ class Hand {
 
     @Override
     public String toString() {
-        return this.getFormattedSuit(Suit.CLUBS) + "\n"
-                + this.getFormattedSuit(Suit.DIAMONDS) + "\n"
-                + this.getFormattedSuit(Suit.HEARTS) + "\n"
-                + this.getFormattedSuit(Suit.SPADES);
+        return this.getFormattedCardSuit(CardSuit.CLUBS) + "\n"
+                + this.getFormattedCardSuit(CardSuit.DIAMONDS) + "\n"
+                + this.getFormattedCardSuit(CardSuit.HEARTS) + "\n"
+                + this.getFormattedCardSuit(CardSuit.SPADES);
     }
 }
